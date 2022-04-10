@@ -1,7 +1,14 @@
 apply plugin: "com.android.application"
-
+apply from: project(":react-native-config").projectDir.getPath() + "/dotenv.gradle"
 import com.android.build.OutputFile
 
+project.ext.envConfigFiles = [
+  prod: ".env.prod",
+  dev: ".env.dev",
+// Also you can different types of environments,
+  // for example staging.
+  staging: ".env.staging",
+];
 /**
  * The react.gradle file registers a task for each build variant (e.g. bundleDebugJsAndAssets
  * and bundleReleaseJsAndAssets).
@@ -140,7 +147,7 @@ android {
         versionCode 1
         versionName "1.0"
         buildConfigField "boolean", "IS_NEW_ARCHITECTURE_ENABLED", isNewArchitectureEnabled().toString()
-
+        resValue "string", "build_config_package", "com.yourshoes"
         if (isNewArchitectureEnabled()) {
             // We configure the NDK build only if you decide to opt-in for the New Architecture.
             externalNativeBuild {

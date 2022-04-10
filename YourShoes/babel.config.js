@@ -5,8 +5,8 @@ module.exports = {
       'module-resolver',
       {
         alias: {
-          'assets': './assets',
-          'src': './src',
+          '@assets': './assets',
+          '@src': './src',
         },
       },
     ],

@@ -1,15 +1,14 @@
 import {flow, types} from 'mobx-state-tree';
 import {AuthenService} from '@src/services/AuthenServices';
 
-export const AuthStore = types
+const AuthStore = types
   .model({
     email: types.string,
     phone: types.string,
   })
   .views(self => ({
     get getFullName() {
-      const fullName = self.phone + self.email;
-      return fullName.toString();
+      return self.email + self.phone;
     },
   }))
   .actions(self => ({
@@ -22,10 +21,10 @@ export const AuthStore = types
   }))
   .actions(self => ({
     signUp: flow(function* signUp(email: string, phone: string) {
-      self.setEmail(email);
-      self.setPhone(phone);
       try {
-        yield AuthenService.signUp(email, phone);
+        const res = yield AuthenService.signUp(email, phone);
+        self.setEmail(res.email || 'hoang');
+        self.setPhone(res.phone || 'linh');
       } catch (e) {
         console.log('', e);
       }
@@ -35,3 +34,4 @@ export const AuthStore = types
     email: '',
     phone: '',
   });
+export default AuthStore;

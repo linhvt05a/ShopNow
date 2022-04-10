@@ -1,23 +1,27 @@
-import {StyleSheet, Text, View} from 'react-native';
-import React, {useEffect} from 'react';
-import {AuthStore} from '@src/features/authentication/authenStore';
+import {NavigationContainer} from '@react-navigation/native';
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import AuthStack from '@src/navigation/AuthStack';
+import RootTab from '@src/navigation/RootTab';
+import React from 'react';
+const Stack = createNativeStackNavigator();
+
 const App = () => {
-  useEffect(() => {
-    AuthStore.signUp('hoang', 'quang linh');
-  }, []);
   return (
-    <View style={styles.container}>
-      <Text>{`my name is ${AuthStore.getFullName}`}</Text>
-    </View>
+    <NavigationContainer>
+      <Stack.Navigator initialRouteName="Authentication">
+        <Stack.Screen
+          component={AuthStack}
+          name="UserNotExist"
+          options={{headerShown: false, gestureEnabled: false}}
+        />
+        <Stack.Screen
+          component={RootTab}
+          name="UserExist"
+          options={{headerShown: false, gestureEnabled: false}}
+        />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 };
 
 export default App;
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-});

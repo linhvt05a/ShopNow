@@ -4,9 +4,8 @@ require_relative '../node_modules/@react-native-community/cli-platform-ios/nativ
 platform :ios, '11.0'
 install! 'cocoapods', :deterministic_uuids => false
 
-target 'YourShoes' do
+abstract_target 'YourShoesCommonPods' do
   config = use_native_modules!
-
   # Flags change depending on the env values.
   flags = get_default_flags()
 
@@ -18,7 +17,12 @@ target 'YourShoes' do
     # An absolute path to your application root.
     :app_path => "#{Pod::Config.instance.installation_root}/.."
   )
-
+  target 'YourShoesDev' do
+  end
+  target 'YourShoesStaging' do
+  end
+  target 'YourShoesProd' do
+  end
   target 'YourShoesTests' do
     inherit! :complete
     # Pods for testing
