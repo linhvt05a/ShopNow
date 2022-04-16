@@ -1,20 +1,37 @@
-import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import {COLORS, ICONS, SIZES} from '@src/constants/theme';
-import DashBoard from '@src/features/dashBoard/screens';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { RouteProp } from '@react-navigation/native';
+import { COLORS, ICONS, SIZES } from '@src/constants/theme';
 import Account from '@src/screens/Account';
+import DashBoard from '@src/screens/DashBoard';
 import Notification from '@src/screens/Notification';
-import Settings from '@src/screens/Settings';
+import Setting from '@src/screens/Settings';
 import ShopFeed from '@src/screens/ShopFeed';
 import React from 'react';
-import {Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
+import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
-const Tab = createBottomTabNavigator();
+export type MainBottomTabParamList = {
+Home: undefined;
+ShopFeed: undefined;
+Setting: undefined;
+Notification: undefined;
+Account: undefined;
+};
+export type RootRouteProps<RouteName extends keyof MainBottomTabParamList> = RouteProp<
+  MainBottomTabParamList,
+  RouteName
+>;
+export type Route = {
+  key: string
+  name?: Extract<MainBottomTabParamList, string>
+  params: object | undefined
+}
+const Tab = createBottomTabNavigator<MainBottomTabParamList>();
 export default function RootTab() {
   return (
     <Tab.Navigator tabBar={props => <CustomTabar {...props} />}>
-      <Tab.Screen name="Home" component={DashBoard} />
+      <Tab.Screen name='Home' component={DashBoard} />
       <Tab.Screen name="ShopFeed" component={ShopFeed} />
-      <Tab.Screen name="Settings" component={Settings} />
+      <Tab.Screen name="Setting" component={Setting} />
       <Tab.Screen name="Notification" component={Notification} />
       <Tab.Screen name="Account" component={Account} />
     </Tab.Navigator>
@@ -70,7 +87,7 @@ const CustomTabar = (props: any) => {
           switch (route.name) {
             case 'Home':
               return <Image source={homeIcon} style={styles.iconTab} />;
-            case 'Settings':
+            case 'Setting':
               return <Image source={settingIcon} style={styles.iconTab} />;
             case 'ShopFeed':
               return <Image source={shopFeedIcon} style={styles.iconTab} />;
@@ -106,18 +123,17 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     height: 60,
     backgroundColor: COLORS.white,
-    position: 'absolute',
-    left: 20,
-    right: 20,
-    bottom: 30,
+    bottom: SIZES.height >= 767 ? 30 : 15,
+    width: SIZES.width - 20,
     borderRadius: SIZES.radius,
     shadowColor: COLORS.gray,
     shadowOffset: {width: -2, height: 4},
     shadowOpacity: 0.2,
     shadowRadius: 3,
+    alignSelf: 'center',
   },
   buttonTab: {
-    paddingHorizontal: 10,
+    paddingHorizontal: 16,
     paddingVertical: 5,
     justifyContent: 'center',
     alignItems: 'center',
