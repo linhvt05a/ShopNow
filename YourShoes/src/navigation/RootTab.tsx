@@ -12,7 +12,7 @@ import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 export type MainBottomTabParamList = {
 Home: undefined;
 ShopFeed: undefined;
-Setting: undefined;
+Live: undefined;
 Notification: undefined;
 Account: undefined;
 };
@@ -31,7 +31,7 @@ export default function RootTab() {
     <Tab.Navigator tabBar={props => <CustomTabar {...props} />}>
       <Tab.Screen name='Home' component={DashBoard} />
       <Tab.Screen name="ShopFeed" component={ShopFeed} />
-      <Tab.Screen name="Setting" component={Setting} />
+      <Tab.Screen name="Live" component={Setting} />
       <Tab.Screen name="Notification" component={Notification} />
       <Tab.Screen name="Account" component={Account} />
     </Tab.Navigator>
@@ -73,8 +73,8 @@ const CustomTabar = (props: any) => {
         const renderIcon = () => {
           const homeIcon = isFocused ? ICONS.homeActiveIcon : ICONS.homeIcon;
           const settingIcon = isFocused
-            ? ICONS.settingActiveIcon
-            : ICONS.settingIcon;
+            ? ICONS.liveActiveIcon
+            : ICONS.liveIcon;
           const shopFeedIcon = isFocused
             ? ICONS.shopFeedActiveIcon
             : ICONS.shopFeedIcon;
@@ -87,7 +87,7 @@ const CustomTabar = (props: any) => {
           switch (route.name) {
             case 'Home':
               return <Image source={homeIcon} style={styles.iconTab} />;
-            case 'Setting':
+            case 'Live':
               return <Image source={settingIcon} style={styles.iconTab} />;
             case 'ShopFeed':
               return <Image source={shopFeedIcon} style={styles.iconTab} />;

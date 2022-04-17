@@ -14,7 +14,7 @@ export const SIZES = {
   font: 14,
   radius: 12,
   padding: 24,
-
+  biggest: 72,
   // font sizes
   h1: 30,
   h2: 22,
@@ -43,14 +43,32 @@ export const FONTS = {
 };
 
 export const ICONS = {
+  // TAB ICON
   homeIcon: require('@src/assets/icons/icons8-smart-home-checked-50.png'),
   homeActiveIcon: require('@src/assets/icons/icons8-smart-home-checked-50-active.png'),
   shopFeedIcon: require('@src/assets/icons/icons8-copy-50.png'),
   shopFeedActiveIcon: require('@src/assets/icons/icons8-copy-50-feed-active.png'),
   accountIcon: require('@src/assets/icons/icons8-contacts-50.png'),
   accountActiveIcon: require('@src/assets/icons/icons8-contacts-50-active.png'),
-  settingIcon: require('@src/assets/icons/icons8-cogwheel-64.png'),
-  settingActiveIcon: require('@src/assets/icons/icons8-cogwheel-active.png'),
+  liveIcon: require('@src/assets/icons/icons8-no-video-24.png'),
+  liveActiveIcon: require('@src/assets/icons/icons8-no-video-active.png'),
   notificationIcon: require('@src/assets/icons/icons8-jingle-bell-100.png'),
   notificationActiveIcon: require('@src/assets/icons/icons8-jingle-bell-100-active.png'),
+
+  // ONBOARDING ICON
+  shoeIcon: require('@src/assets/icons/icons8-footwear-50.png'),
+  shoppingBagIcon: require('@src/assets/icons/icons8-shopping-bag-50.png'),
+  quickSearchIcon: require('@src/assets/icons/icons8-opera-glasses-50.png'),
+  wishListIcon: require('@src/assets/icons/icons8-wish-list-50.png'),
+  trackingOrderIcon: require('@src/assets/icons/icons8-truck-50.png'),
+  alarmIcon: require('@src/assets/icons/icons8-add-reminder-50.png'),
+  paymentIcon: require('@src/assets/icons/icons8-mastercard-credit-card-50.png'),
+  appleIcon: require('@src/assets/icons/apple-logo.png'),
+  nextIcon: require('@src/assets/icons/next.png'),
+  backIcon: require('@src/assets/icons/left-arrow.png'),
+
+  // SOCIAL NETWORK ICON
+  google: require('@src/assets/icons/google.png'),
+  apple: require('@src/assets/icons/apple.png'),
+  facebook: require('@src/assets/icons/facebook.png')
 };

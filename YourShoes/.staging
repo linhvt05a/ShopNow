@@ -1,4 +1,0 @@
-
-AWS_ENDPOINT=https://tnter0nohch.sandbox.verygoodproxy.com/unifi-qa
-# ENVIRONMENT
-ENV=STAGING
